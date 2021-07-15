@@ -19,7 +19,7 @@
                 session_start();
                 $_SESSION["id_pegawai"] = $data["id_pegawai"];
                 $_SESSION["nama_pegawai"] = $data["nama_pegawai"];
-                header("Location: transaksi.php");
+                header("Location: P02.php");
             }
             else 
             {
