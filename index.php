@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style01.css">
 
 <?php
     include_once("functions.php");
