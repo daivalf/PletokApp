@@ -1,8 +1,35 @@
+<link rel="stylesheet" href="style01.css">
+
 <?php
+define("DEVELOPMENT" , TRUE);
 
 function dbconnect(){
     $db = new mysqli ("localhost", "root", "db_pletokapp");
     return $db;
+}
+
+function showError($message)
+{
+	?>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <div class="showerror show">
+        <span class="msg">
+            <?php echo $message;?>
+        </span>
+        <span class="close-btn">
+            <span class="fas fa-times"></span>
+        </span>
+    </div>
+
+    <script>
+         $('.close-btn').click(function(){
+           $('.showerror').removeClass("show");
+           $('.showerror').addClass("hide");
+         });
+    </script>
+
+	<?php
 }
 
 function navigasi_pelayan()
