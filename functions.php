@@ -89,7 +89,7 @@ function navigasi_bartender()
                 <ul>
                     <li><a href="">Buat Menu Baru</a></li>
                     <li><a href="">Konfirmasi Stok</a></li>
-                    <li><a href="">List pesanan</a></li>
+                    <li><a href="P10.php">List pesanan</a></li>
                     <li><a style="color: red;" href="">Logout</a></li>
                 </ul>
             </nav>
