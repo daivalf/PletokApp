@@ -8,6 +8,24 @@ function dbconnect(){
     return $db;
 }
 
+function getListMeja()
+{
+    $db=dbconnect();
+    if($db->errno==0)
+    {
+        $res=$db->query("select * from tb_meja order by nomor_meja");
+            if($res)
+            {
+                $data=$res->fetch_all(MYSQLI_ASSOC);
+                return $data;
+            }
+            else 
+                return false;
+    }
+    else
+        return false;
+}
+
 function showError($message)
 {
 	?>
@@ -169,6 +187,50 @@ function navigasi_P08()
                 </div>
                 <ul>
                     <li><a style="color: red;" href="P02.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+
+function navigasi_P19()
+{
+    ?>
+    <html>
+        <head>
+            <title>Daftar Menu</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P07.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+
+function navigasi_P22()
+{
+    ?>
+    <html>
+        <head>
+            <title>Tambah List Pesanan</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P07.php">Back</a></li>
                 </ul>
             </nav>
         </head>
