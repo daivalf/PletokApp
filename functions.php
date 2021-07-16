@@ -239,4 +239,26 @@ function navigasi_P22()
     </html>
     <?php
 }
+
+function navigasi_P10()
+{
+    ?>
+    <html>
+        <head>
+            <title>Daftar Menu</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P03.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
 ?>
