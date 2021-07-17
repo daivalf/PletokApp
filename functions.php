@@ -150,6 +150,27 @@ function navigasi_owner()
     </html>
     <?php
 }
+function navigasi_P06()
+{
+?>
+    <html>
+        <head>
+            <title>List Meja</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P02.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
 
 function navigasi_P07()
 {
@@ -173,7 +194,6 @@ function navigasi_P07()
     <?php
 }
 
-
 function navigasi_P08()
 {
     ?>
@@ -187,6 +207,27 @@ function navigasi_P08()
                 </div>
                 <ul>
                     <li><a style="color: red;" href="P02.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+function navigasi_P09()
+{
+?>
+    <html>
+        <head>
+            <title>Pengajuan Menu</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P03.php">Back</a></li>
                 </ul>
             </nav>
         </head>
