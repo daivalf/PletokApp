@@ -18,7 +18,7 @@ if(isset ($_GET["nomor_meja"])) {
     $datameja = getDataMeja($nomor_meja);
     if($datameja){
         ?>
-<form method="post" name="frm" action="updatemeja.php">
+<form method="post" name="frm" action="P06-update-meja.php">
 <table border="1" class="table">
         <tr><td>Nomor_Meja</td>
     <td><input type="text" name="nomor_meja" size="11" maxlength="10" 
