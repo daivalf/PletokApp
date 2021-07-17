@@ -4,7 +4,7 @@
 define("DEVELOPMENT" , TRUE);
 
 function dbconnect(){
-    $db = new mysqli ("localhost", "root", "db_pletokapp");
+    $db = new mysqli ("localhost", "root", "", "db_pletokapp");
     return $db;
 }
 
