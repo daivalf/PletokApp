@@ -9,7 +9,7 @@ $db=dbconnect();
     $getdatap09 = navigasi_P09();
     ?>
 </head>
-<Link rel="stylesheet" href="style09.css">
+<Link rel="stylesheet" href="style_fauzan.css">
 <body>
         <div class="background"></div>
         <form method="post" name="F" action="P09-simpan.php">
@@ -17,13 +17,13 @@ $db=dbconnect();
     <h1></h1>
     <table border="1" class="table">
 <tr><td>Id Menu </td>
-    <td><input type="text" name="IdMenu" size="20" maxlength="21"></td></tr>
+    <td><input type="text" name="id_menu_sementara" size="20" maxlength="21"></td></tr>
 <tr><td>Nama Menu </td>
-    <td><input type="text" name="NamaMenu" size="20" maxlength="21"></td></tr>
+    <td><input type="text" name="nama_menu_sementara" size="20" maxlength="21"></td></tr>
 <tr><td>Harga</td>
-    <td><input type="text" name="Harga" size="20" maxlength="21"></td></tr>
+    <td><input type="text" name="harga_sementara" size="20" maxlength="21"></td></tr>
 </table>
-<input type="submit" name="tblsimpan" value="simpan" class="btn">
-        <input type="reset"class="btn">
+<input type="submit" name="tblsimpan" value="simpan" class="btn09">
+        <input type="reset"class="btn09">
     </form>
 </body>
