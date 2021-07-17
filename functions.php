@@ -339,7 +339,6 @@ function navigasi_P10()
     </html>
     <?php
 }
-?>
 
 
 function navigasi_P11()
@@ -363,3 +362,4 @@ function navigasi_P11()
     </html>
     <?php
 }
+?>
