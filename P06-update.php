@@ -10,7 +10,7 @@ include_once("functions.php");
 </head>
 <body>
 <div class="background"></div>
-<Link rel="stylesheet" href="style06.css">
+<Link rel="stylesheet" href="style_fauzan.css">
 <?php
 if(isset ($_GET["nomor_meja"])) {
     $db = dbConnect();
@@ -28,16 +28,16 @@ if(isset ($_GET["nomor_meja"])) {
         <option value="tersedia">tersedia</option>
         <option value="tidak tersedia">tidak tersedia</option>
         </td></tr>
-        <td><input class="btn" type="submit" name="updatemeja" value="Update">
+        <td><input class="btn06" type="submit" name="updatemeja" value="Update">
         </td></tr>
 </table>
     <?php
     }
     else
-    echo "Data sembako tidak ada atau sudah di hapus";
+    echo "Data tidak ada atau sudah di hapus";
 }
 else
-    echo "Data IdSembako tidak ada";
+    echo "Data tidak ada";
 
 ?>
 </body>

@@ -9,7 +9,7 @@ $db=dbconnect();
     $getdatap06 = navigasi_P06();
     ?>
 </head>
-<Link rel="stylesheet" href="style06.css">
+<Link rel="stylesheet" href="style_fauzan.css">
     <body>
         <div class="background"></div>
     <h1 class="h1">Daftar meja : </h1>
@@ -39,7 +39,7 @@ $db=dbconnect();
             <td><?php echo $barisdata["nomor_meja"]?></td>
             
             <td><?php echo $barisdata["status"]?></td>
-            <td><a href="P06-update.php?nomor_meja=<?php echo $barisdata["nomor_meja"]?>"><button class="btn">Update</button></a></td>
+            <td><a href="P06-update.php?nomor_meja=<?php echo $barisdata["nomor_meja"]?>"><button class="btn06">Update</button></a></td>
         </tr>
             <?php
     }

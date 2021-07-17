@@ -3,7 +3,7 @@ include_once("functions.php");
 ?>
 <!DOCTYPE html>
 <html>
-<Link rel="stylesheet" href="style06.css">
+<Link rel="stylesheet" href="style_fauzan.css">
 <?php
 $db = dbConnect();
 if($db->connect_errno==0) {
@@ -19,13 +19,13 @@ if($db->connect_errno==0) {
             if($db->affected_rows > 0) {
                 ?>
                 Update sukses<br>
-                <a href="P06.php"><button class="btn">View meja</button></a>
+                <a href="P06.php"><button class="btn06">View meja</button></a>
                 <?php
             }
             else{
                 ?>
                 Update Gagal<br>
-                <a href="P06.php"><button class="btn">Kembali</button></a>
+                <a href="P06.php"><button class="btn06">Kembali</button></a>
                 <?php
             }
     }
