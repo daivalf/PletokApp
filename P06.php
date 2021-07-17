@@ -13,7 +13,6 @@ $db=dbconnect();
     <body>
         <div class="background"></div>
     <h1 class="h1">Daftar meja : </h1>
-    <form method="post" name="F" action="P06-update.php">
     <?php
     $db = dbConnect();
     if($db->connect_errno==0){
@@ -30,6 +29,7 @@ $db=dbconnect();
         <tr>
             <th>Nomor Meja</th>
             <th>Status</th>
+            <th>Ubah Status</th>
         </tr>
         <?php
    $data=$res->fetch_all(MYSQLI_ASSOC);
@@ -37,11 +37,9 @@ $db=dbconnect();
 ?>
         <tr>
             <td><?php echo $barisdata["nomor_meja"]?></td>
-            <td>
-                <select name="status">
-                <option value="tersedia">Tersedia</option>
-                <option value="tidaktersedia">Tidak Tersedia</option>
-            </select></td>
+            
+            <td><?php echo $barisdata["status"]?></td>
+            <td><a href="P06-update.php?nomor_meja=<?php echo $barisdata["nomor_meja"]?>"><button class="btn">Update</button></a></td>
         </tr>
             <?php
     }
@@ -49,10 +47,6 @@ $db=dbconnect();
             
 	
         </table>
-        <h1></h1>
-        <input type="submit" name="tblsimpan" value="simpan" class="btn">
-        <input type="reset"class="btn">
-    </form>
     </body>
 </html>
 <?php
