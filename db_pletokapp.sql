@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 09:59 AM
+-- Generation Time: Jul 17, 2021 at 11:24 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -41,8 +41,8 @@ INSERT INTO `tb_meja` (`nomor_meja`, `status`) VALUES
 ('01', 'tersedia'),
 ('02', 'tidak tersedia'),
 ('03', 'tersedia'),
-('04', 'tersedia'),
-('05', 'tidak tersedia');
+('04', 'tidak tersedia'),
+('05', 'tersedia');
 
 -- --------------------------------------------------------
 
@@ -65,6 +65,25 @@ INSERT INTO `tb_menu` (`id_menu`, `nama_menu`, `harga`, `stok`) VALUES
 ('01-PLORG', 'Pletok Original', 19000, 'tersedia'),
 ('02-PLSTR', 'Pletok Stoberi', 22000, 'tersedia'),
 ('03-PLAGR', 'Pletok Anggur', 20000, 'tersedia');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_menu_sementara`
+--
+
+CREATE TABLE `tb_menu_sementara` (
+  `id_menu_sementara` varchar(10) NOT NULL,
+  `nama_menu_sementara` varchar(40) NOT NULL,
+  `harga_sementara` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_menu_sementara`
+--
+
+INSERT INTO `tb_menu_sementara` (`id_menu_sementara`, `nama_menu_sementara`, `harga_sementara`) VALUES
+('05-PLCKT', 'Pletok Coklat', 18000);
 
 -- --------------------------------------------------------
 
@@ -189,6 +208,12 @@ ALTER TABLE `tb_meja`
 --
 ALTER TABLE `tb_menu`
   ADD PRIMARY KEY (`id_menu`);
+
+--
+-- Indexes for table `tb_menu_sementara`
+--
+ALTER TABLE `tb_menu_sementara`
+  ADD PRIMARY KEY (`id_menu_sementara`);
 
 --
 -- Indexes for table `tb_pegawai`
