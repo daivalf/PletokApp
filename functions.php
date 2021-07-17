@@ -26,6 +26,43 @@ function getListMeja()
         return false;
 }
 
+function getListMenu()
+{
+    $db=dbconnect();
+    if($db->errno==0)
+    {
+        $res=$db->query("select * from tb_menu order by id_menu");
+            if($res)
+            {
+                $data=$res->fetch_all(MYSQLI_ASSOC);
+                return $data;
+            }
+            else 
+                return false;
+    }
+    else
+        return false;
+}
+
+function getDataMenu($idMenu)
+{
+$db = dbConnect();
+if ($db->connect_errno == 0) {
+    $res = $db->query("select * from tb_menu
+                       where id_menu='$idMenu'"); 
+    if ($res) {
+        if ($res->num_rows > 0) {
+            $data = $res->fetch_assoc();
+            $res->free();
+        return $data;
+        } else
+            return FALSE;
+    } else
+        return FALSE;
+} else
+return FALSE;
+}
+
 function showError($message)
 {
 	?>
@@ -303,3 +340,69 @@ function navigasi_P10()
     <?php
 }
 ?>
+
+function navigasi_P19()
+{
+    ?>
+    <html>
+        <head>
+            <title>Daftar Menu</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P07.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+
+function navigasi_P22()
+{
+    ?>
+    <html>
+        <head>
+            <title>Tambah List Pesanan</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P07.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+
+function navigasi_P11()
+{
+    ?>
+    <html>
+        <head>
+            <title>Tambah List Pesanan</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P03.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
