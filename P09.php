@@ -1,15 +1,18 @@
 <?php
-include_once("functions.php");?>
+include_once("functions.php");
+$db=dbconnect();
+?>
 <!DOCTYPE html>
 <html>
 <head>
 <?php
-    $getdatap06 = navigasi_P09();
+    $getdatap09 = navigasi_P09();
     ?>
 </head>
 <Link rel="stylesheet" href="style09.css">
 <body>
         <div class="background"></div>
+        <form method="post" name="F" action="P09-simpan.php">
     <h1 class="h1">Pengajuan Penambahan Menu Baru </h1>
     <h1></h1>
     <table border="1" class="table">
@@ -20,6 +23,7 @@ include_once("functions.php");?>
 <tr><td>Harga</td>
     <td><input type="text" name="Harga" size="20" maxlength="21"></td></tr>
 </table>
-<button class="btn" href="P17.php">Ajukan</button>
-        <button class="btn">Reset</button>
+<input type="submit" name="tblsimpan" value="simpan" class="btn">
+        <input type="reset"class="btn">
+    </form>
 </body>
