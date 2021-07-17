@@ -208,6 +208,44 @@ function navigasi_P06()
     </html>
     <?php
 }
+function navigasi_P061()
+{
+?>
+    <html>
+        <head>
+            <title>List Meja</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P06.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+function getDataMeja($nomor_meja) {
+    $db = dbConnect();
+    if($db->errno==0) {
+        $res=$db->query(("SELECT tb_meja.nomor_meja, tb_meja.status
+        FROM tb_meja
+        WHERE tb_meja.nomor_meja='$nomor_meja'"));
+        if($res) {
+            $data=$res->fetch_assoc();
+            
+            return $data;
+        }
+        else
+        return false;
+    }
+    else
+    return false;
+}
 
 function navigasi_P07()
 {
