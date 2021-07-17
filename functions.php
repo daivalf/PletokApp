@@ -341,49 +341,6 @@ function navigasi_P10()
 }
 ?>
 
-function navigasi_P19()
-{
-    ?>
-    <html>
-        <head>
-            <title>Daftar Menu</title>
-            <link rel="stylesheet" type="text/css" href="navbar.css">
-            <nav>
-                <div class="logo">
-                    <p>Pletok App</p>
-                </div>
-                <ul>
-                    <li><a style="color: red;" href="P07.php">Back</a></li>
-                </ul>
-            </nav>
-        </head>
-        <body>
-        </body>
-    </html>
-    <?php
-}
-
-function navigasi_P22()
-{
-    ?>
-    <html>
-        <head>
-            <title>Tambah List Pesanan</title>
-            <link rel="stylesheet" type="text/css" href="navbar.css">
-            <nav>
-                <div class="logo">
-                    <p>Pletok App</p>
-                </div>
-                <ul>
-                    <li><a style="color: red;" href="P07.php">Back</a></li>
-                </ul>
-            </nav>
-        </head>
-        <body>
-        </body>
-    </html>
-    <?php
-}
 
 function navigasi_P11()
 {
