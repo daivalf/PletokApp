@@ -259,7 +259,7 @@ function navigasi_P07()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a style="color: red;" href="P02.php">Back</a></li>
+                    <li><a style="color: red;" class="thick" href="P02.php">Back</a></li>
                 </ul>
             </nav>
         </head>
@@ -324,7 +324,7 @@ function navigasi_P19()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a style="color: red;" href="P07.php">Back</a></li>
+                    <li><a style="color: red;" href="P07.php" class="thick">Back</a></li>
                 </ul>
             </nav>
         </head>
@@ -400,4 +400,28 @@ function navigasi_P11()
     </html>
     <?php
 }
+
+
+function navigasi_P23()
+{
 ?>
+    <html>
+        <head>
+            <title>Tambah Data Konfirmasi Pembayaran</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P03.php" class="thick">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+?>
+
