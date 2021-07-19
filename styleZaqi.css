@@ -77,7 +77,70 @@ th {
     font-weight: bold ;
 } /* untuk memperbesar tulisan */ 
 
+.btn23 {
+    position:relative;
+    top: 220px;
+    left: 100px;
+    border : 0;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    padding : 16px 30px;
+    background : #FE9696;
+}
 
+.btn231 {
+    position:relative;
+    top: 220px;
+    left: 100px;
+    border : 0;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    padding : 16px 30px;
+    background : #fac990;
+}
+
+.btn24 {
+    position:relative;
+    top: 220px;
+    left: 100px;
+    border : 0;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    padding : 16px 30px;
+    background : #FE9696;
+}
+
+.btn241 {
+    position:relative;
+    top: 220px;
+    left: 100px;
+    border : 0;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    padding : 16px 30px;
+    background : #fac990;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 800px;
+    position: absolute;
+    top: 220px;
+    left: 100px;
+    margin: auto;
+    background-color:#fff;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
 /*.btn:active{
     background: #FF5B5B;
 }*/
