@@ -6,7 +6,7 @@ $db=dbconnect();
 <html>
 <head>
 <?php
-    $getdatap09 = navigasi_P09();
+    navigasi_P09();
     ?>
 </head>
 <Link rel="stylesheet" href="style_fauzan.css">

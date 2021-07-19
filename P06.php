@@ -6,7 +6,7 @@ $db=dbconnect();
 <html>
 <head>
 <?php
-    $getdatap06 = navigasi_P06();
+    navigasi_P06();
     ?>
 </head>
 <Link rel="stylesheet" href="style_fauzan.css">
@@ -19,9 +19,7 @@ $db=dbconnect();
         $sql = "SELECT tb_meja.nomor_meja,tb_meja.status
         FROM tb_meja
         ";
-         if (isset($_POST["cari"])) {
-            $sql = cari_jenis($_POST["keyword"]);
-        }
+         
         $res= $db->query($sql);
         if($res) {
     ?>

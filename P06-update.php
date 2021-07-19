@@ -5,7 +5,7 @@ include_once("functions.php");
 <html>
 <head>
 <?php
-    $getdatap06 = navigasi_P061();
+    navigasi_P061();
     ?>
 </head>
 <body>

@@ -4,8 +4,14 @@ $db=dbconnect();
 ?>
 <!DOCTYPE html>
 <html>
-    <head><Link rel="stylesheet" href="style_fauzan.css"></head>
+    <head>
+        <Link rel="stylesheet" href="style_fauzan.css">
+        <?php
+    navigasi_P09();
+    ?>
+    </head>
     <body>
+        
     <?php
 $db = dbConnect();
 if($db->connect_errno==0) {
@@ -35,8 +41,10 @@ if($db->connect_errno==0) {
     if($res){
             if($db->affected_rows>0) {
                 ?>
-                <h1 class="h1">Data Berhasil Diajukan</h1><br>
-                <a href="P09.php"><button class="btn09">View penambahan menu baru</button></a>
+                <script>
+                    alert("Data Sudah di ajukan");
+                    window.location.href="P09.php";
+                    </script>
                 <?php
             }
             else{
