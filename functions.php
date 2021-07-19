@@ -43,59 +43,6 @@ function getListMenu()
     else
         return false;
 }
-function getDataMeja($nomor_meja) {
-    $db = dbConnect();
-    if($db->errno==0) {
-        $res=$db->query(("SELECT tb_meja.nomor_meja, tb_meja.status
-        FROM tb_meja
-        WHERE tb_meja.nomor_meja='$nomor_meja'"));
-        if($res) {
-            $data=$res->fetch_assoc();
-            
-            return $data;
-        }
-        else
-        return false;
-    }
-    else
-    return false;
-}
-
-function getListMeja()
-{
-    $db=dbconnect();
-    if($db->errno==0)
-    {
-        $res=$db->query("select * from tb_meja order by nomor_meja");
-            if($res)
-            {
-                $data=$res->fetch_all(MYSQLI_ASSOC);
-                return $data;
-            }
-            else 
-                return false;
-    }
-    else
-        return false;
-}
-
-function getDataMenu($id_menu_sementara) {
-    $db = dbConnect();
-    if($db->errno==0) {
-        $res=$db->query(("SELECT id_menu_sementara,nama_menu_sementara,harga_sementara
-        FROM tb_menu_sementara
-        WHERE id_menu_sementara='$id_menu_sementara'"));
-        if($res) {
-            $data=$res->fetch_assoc();
-            
-            return $data;
-        }
-        else
-        return false;
-    }
-    else
-    return false;
-}
 
 function getDataMenu($idMenu)
 {
@@ -178,7 +125,7 @@ function navigasi_bartender()
                 </div>
                 <ul>
                     <li><a href="">Buat Menu Baru</a></li>
-                    <li><a href="P11.php">Konfirmasi Stok</a></li>
+                    <li><a href="">Konfirmasi Stok</a></li>
                     <li><a href="P10.php">List pesanan</a></li>
                     <li><a style="color: red;" href="">Logout</a></li>
                 </ul>
@@ -230,7 +177,7 @@ function navigasi_owner()
                 <ul>
                     <li><a href="">Laporan Pendapatan</a></li>
                     <li><a href="">Konfirmasi Tambah Menu</a></li>
-                    <li><a href="P18.php">Daftar Menu</a></li>
+                    <li><a href="">Daftar Menu</a></li>
                     <li><a style="color: red;" href="">Logout</a></li>
                 </ul>
             </nav>
@@ -356,48 +303,6 @@ function navigasi_P09()
                 </div>
                 <ul>
                     <li><a style="color: red;" href="P03.php">Back</a></li>
-                </ul>
-            </nav>
-        </head>
-        <body>
-        </body>
-    </html>
-    <?php
-}
-function navigasi_P17()
-{
-?>
-    <html>
-        <head>
-            <title>List Meja</title>
-            <link rel="stylesheet" type="text/css" href="navbar.css">
-            <nav>
-                <div class="logo">
-                    <p>Pletok App</p>
-                </div>
-                <ul>
-                    <li><a style="color: red;" href="P05.php">Back</a></li>
-                </ul>
-            </nav>
-        </head>
-        <body>
-        </body>
-    </html>
-    <?php
-}
-function navigasi_P171()
-{
-?>
-    <html>
-        <head>
-            <title>List Meja</title>
-            <link rel="stylesheet" type="text/css" href="navbar.css">
-            <nav>
-                <div class="logo">
-                    <p>Pletok App</p>
-                </div>
-                <ul>
-                    <li><a style="color: red;" href="P17.php">Back</a></li>
                 </ul>
             </nav>
         </head>
@@ -541,6 +446,7 @@ function navigasi_P18()
     <?php
 }
 
+
 function navigasi_P20()
 {
     ?>
@@ -554,6 +460,28 @@ function navigasi_P20()
                 </div>
                 <ul>
                     <li><a style="color: red;" href="P10.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+
+function navigasi_P24()
+{
+    ?>
+    <html>
+        <head>
+            <title>Tambah Data Rincian Pesanan</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P19.php" class="thick">Back</a></li>
                 </ul>
             </nav>
         </head>
