@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2021 at 11:24 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.26
+-- Generation Time: Jul 19, 2021 at 12:20 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,11 +37,11 @@ CREATE TABLE `tb_meja` (
 --
 
 INSERT INTO `tb_meja` (`nomor_meja`, `status`) VALUES
-('01', 'tersedia'),
-('02', 'tidak tersedia'),
-('03', 'tersedia'),
+('01', 'tidak tersedia'),
+('02', 'tersedia'),
+('03', 'tidak tersedia'),
 ('04', 'tidak tersedia'),
-('05', 'tersedia');
+('05', 'tidak tersedia');
 
 -- --------------------------------------------------------
 
@@ -54,36 +53,19 @@ CREATE TABLE `tb_menu` (
   `id_menu` varchar(10) NOT NULL,
   `nama_menu` varchar(40) NOT NULL,
   `harga` int(12) NOT NULL,
-  `stok` enum('tersedia','tidak tersedia') NOT NULL
+  `stok` enum('tersedia','tidak tersedia') NOT NULL,
+  `status_verifikasi` enum('sudah','belum') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_menu`
 --
 
-INSERT INTO `tb_menu` (`id_menu`, `nama_menu`, `harga`, `stok`) VALUES
-('01-PLORG', 'Pletok Original', 19000, 'tersedia'),
-('02-PLSTR', 'Pletok Stoberi', 22000, 'tersedia'),
-('03-PLAGR', 'Pletok Anggur', 20000, 'tersedia');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_menu_sementara`
---
-
-CREATE TABLE `tb_menu_sementara` (
-  `id_menu_sementara` varchar(10) NOT NULL,
-  `nama_menu_sementara` varchar(40) NOT NULL,
-  `harga_sementara` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tb_menu_sementara`
---
-
-INSERT INTO `tb_menu_sementara` (`id_menu_sementara`, `nama_menu_sementara`, `harga_sementara`) VALUES
-('05-PLCKT', 'Pletok Coklat', 18000);
+INSERT INTO `tb_menu` (`id_menu`, `nama_menu`, `harga`, `stok`, `status_verifikasi`) VALUES
+('01-PLNTR', 'Pletok Nutrisari', 10000, 'tersedia', 'sudah'),
+('01-PLORG', 'Pletok Original', 19000, 'tersedia', 'sudah'),
+('02-PLSTR', 'Pletok Stroberi', 22000, 'tersedia', 'sudah'),
+('03-PLAGR', 'Pletok Anggur', 20000, 'tersedia', 'sudah');
 
 -- --------------------------------------------------------
 
@@ -106,7 +88,9 @@ CREATE TABLE `tb_pegawai` (
 
 INSERT INTO `tb_pegawai` (`id_pegawai`, `nama_pegawai`, `notelp_pegawai`, `alamat`, `password`, `jabatan`) VALUES
 ('P01', 'Ujang', '089562316237', 'Jl.sukrawetan kec.sukra kab.indramayu Bo.29', '1234', 'Pelayan'),
-('P02', 'Larasati', '089726636162', 'Jl.Sekeawi kec.sukamenak kab.bandung no.31', '5678', 'Kasir');
+('P02', 'Larasati', '089726636162', 'Jl.Sekeawi kec.sukamenak kab.bandung no.31', '5678', 'Kasir'),
+('P03', 'Sanji', '081289897465', 'Jl Jend Sudirman 71 S', '1234', 'Bartender'),
+('P04', 'Imam', '089878784657', 'Jl Pekalangan 120,Pekalangan', '5678', 'Owner');
 
 -- --------------------------------------------------------
 
@@ -126,9 +110,9 @@ CREATE TABLE `tb_pelanggan` (
 --
 
 INSERT INTO `tb_pelanggan` (`nomor_pelanggan`, `nomor_meja`, `nama_pelanggan`, `tgl_pemesanan`) VALUES
-('050721001', '01', 'Asep Balon', '2021-07-05'),
-('050721002', '03', 'Suptianto', '2021-07-05'),
-('050721003', '04', 'Sukuna', '2021-07-05');
+('070721001', '04', 'Pili', '2021-07-07'),
+('190721001', '01', 'Pili', '2021-07-19'),
+('230721001', '05', 'Jakiro', '2021-07-23');
 
 -- --------------------------------------------------------
 
@@ -143,13 +127,6 @@ CREATE TABLE `tb_pembayaran` (
   `metode_bayar` enum('cash','debit') NOT NULL,
   `total_bayar` int(12) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tb_pembayaran`
---
-
-INSERT INTO `tb_pembayaran` (`id_pembayaran`, `id_pegawai`, `id_pesanan`, `metode_bayar`, `total_bayar`) VALUES
-('050721-001', 'P02', '050721-001-001', 'cash', 267000);
 
 -- --------------------------------------------------------
 
@@ -168,9 +145,8 @@ CREATE TABLE `tb_pesanan` (
 --
 
 INSERT INTO `tb_pesanan` (`id_pesanan`, `nomor_pelanggan`, `tgl_pemesanan`) VALUES
-('050721-001-001', '050721001', '2021-07-05'),
-('050721-002-002', '050721002', '2021-07-05'),
-('050721-003-003', '050721003', '2021-07-05');
+('070721-001-004', '070721001', '2021-07-07'),
+('230721-001-005', '230721001', '2021-07-23');
 
 -- --------------------------------------------------------
 
@@ -189,9 +165,10 @@ CREATE TABLE `tb_rincian_pesanan` (
 --
 
 INSERT INTO `tb_rincian_pesanan` (`id_pesanan`, `id_menu`, `jumlah_pesanan`) VALUES
-('050721-001-001', '01-PLORG', 3),
-('050721-001-001', '02-PLSTR', 5),
-('050721-001-001', '03-PLAGR', 5);
+('230721-001-005', '01-PLNTR', 6),
+('230721-001-005', '03-PLAGR', 2),
+('070721-001-004', '03-PLAGR', 1),
+('070721-001-004', '02-PLSTR', 5);
 
 --
 -- Indexes for dumped tables
@@ -208,12 +185,6 @@ ALTER TABLE `tb_meja`
 --
 ALTER TABLE `tb_menu`
   ADD PRIMARY KEY (`id_menu`);
-
---
--- Indexes for table `tb_menu_sementara`
---
-ALTER TABLE `tb_menu_sementara`
-  ADD PRIMARY KEY (`id_menu_sementara`);
 
 --
 -- Indexes for table `tb_pegawai`
