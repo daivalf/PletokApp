@@ -499,5 +499,28 @@ function navigasi_P23()
     </html>
     <?php
 }
+
+function navigasi_P18()
+{
+    ?>
+    <html>
+        <head>
+            <title>Tambah List Pesanan</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P05.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+
 ?>
 
