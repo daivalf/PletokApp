@@ -43,6 +43,40 @@ function getListMenu()
     else
         return false;
 }
+function getDataMeja($nomor_meja) {
+    $db = dbConnect();
+    if($db->errno==0) {
+        $res=$db->query(("SELECT tb_meja.nomor_meja, tb_meja.status
+        FROM tb_meja
+        WHERE tb_meja.nomor_meja='$nomor_meja'"));
+        if($res) {
+            $data=$res->fetch_assoc();
+            
+            return $data;
+        }
+        else
+        return false;
+    }
+    else
+    return false;
+}
+function getDataMenu($id_menu_sementara) {
+    $db = dbConnect();
+    if($db->errno==0) {
+        $res=$db->query(("SELECT id_menu_sementara,nama_menu_sementara,harga_sementara
+        FROM tb_menu_sementara
+        WHERE id_menu_sementara='$id_menu_sementara'"));
+        if($res) {
+            $data=$res->fetch_assoc();
+            
+            return $data;
+        }
+        else
+        return false;
+    }
+    else
+    return false;
+}
 
 function getDataMenu($idMenu)
 {
@@ -303,6 +337,48 @@ function navigasi_P09()
                 </div>
                 <ul>
                     <li><a style="color: red;" href="P03.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+function navigasi_P17()
+{
+?>
+    <html>
+        <head>
+            <title>List Meja</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P05.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+function navigasi_P171()
+{
+?>
+    <html>
+        <head>
+            <title>List Meja</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P17.php">Back</a></li>
                 </ul>
             </nav>
         </head>
