@@ -60,6 +60,25 @@ function getDataMeja($nomor_meja) {
     else
     return false;
 }
+
+function getListMeja()
+{
+    $db=dbconnect();
+    if($db->errno==0)
+    {
+        $res=$db->query("select * from tb_meja order by nomor_meja");
+            if($res)
+            {
+                $data=$res->fetch_all(MYSQLI_ASSOC);
+                return $data;
+            }
+            else 
+                return false;
+    }
+    else
+        return false;
+}
+
 function getDataMenu($id_menu_sementara) {
     $db = dbConnect();
     if($db->errno==0) {
@@ -159,7 +178,7 @@ function navigasi_bartender()
                 </div>
                 <ul>
                     <li><a href="">Buat Menu Baru</a></li>
-                    <li><a href="">Konfirmasi Stok</a></li>
+                    <li><a href="P11.php">Konfirmasi Stok</a></li>
                     <li><a href="P10.php">List pesanan</a></li>
                     <li><a style="color: red;" href="">Logout</a></li>
                 </ul>
@@ -211,7 +230,7 @@ function navigasi_owner()
                 <ul>
                     <li><a href="">Laporan Pendapatan</a></li>
                     <li><a href="">Konfirmasi Tambah Menu</a></li>
-                    <li><a href="">Daftar Menu</a></li>
+                    <li><a href="P18.php">Daftar Menu</a></li>
                     <li><a style="color: red;" href="">Logout</a></li>
                 </ul>
             </nav>
