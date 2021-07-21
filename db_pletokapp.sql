@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2021 at 11:33 AM
+-- Generation Time: Jul 19, 2021 at 12:20 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -121,20 +121,12 @@ INSERT INTO `tb_pelanggan` (`nomor_pelanggan`, `nomor_meja`, `nama_pelanggan`, `
 --
 
 CREATE TABLE `tb_pembayaran` (
+  `id_pembayaran` varchar(10) NOT NULL,
   `id_pegawai` varchar(10) NOT NULL,
   `id_pesanan` varchar(15) NOT NULL,
   `metode_bayar` enum('cash','debit') NOT NULL,
-  `total_bayar` int(12) NOT NULL DEFAULT 0,
-  `status_bayar` enum('sudah','belum') NOT NULL
+  `total_bayar` int(12) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tb_pembayaran`
---
-
-INSERT INTO `tb_pembayaran` (`id_pegawai`, `id_pesanan`, `metode_bayar`, `total_bayar`, `status_bayar`) VALUES
-('P02', '070721-001-004', 'debit', 130000, 'sudah'),
-('P02', '230721-001-005', 'cash', 100000, 'sudah');
 
 -- --------------------------------------------------------
 
@@ -176,8 +168,7 @@ INSERT INTO `tb_rincian_pesanan` (`id_pesanan`, `id_menu`, `jumlah_pesanan`) VAL
 ('230721-001-005', '01-PLNTR', 6),
 ('230721-001-005', '03-PLAGR', 2),
 ('070721-001-004', '03-PLAGR', 1),
-('070721-001-004', '02-PLSTR', 5),
-('230721-001-005', '03-PLAGR', 5);
+('070721-001-004', '02-PLSTR', 5);
 
 --
 -- Indexes for dumped tables
@@ -212,6 +203,7 @@ ALTER TABLE `tb_pelanggan`
 -- Indexes for table `tb_pembayaran`
 --
 ALTER TABLE `tb_pembayaran`
+  ADD PRIMARY KEY (`id_pembayaran`),
   ADD KEY `id_pegawai` (`id_pegawai`),
   ADD KEY `id_pesanan` (`id_pesanan`);
 

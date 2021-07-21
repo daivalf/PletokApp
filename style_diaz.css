@@ -2,6 +2,7 @@
 
 .container {
     width: 500px;
+    height: 80px;
     top: 50%;
     left: 50%;
     margin: auto;
@@ -11,9 +12,7 @@
     text-align: center;
     position: fixed;
     font-size: 20px;
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #FFD98F;
+    -webkit-text-fill-color: #FFD98F;
     user-select: none;
 }
 
