@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
+<?php
 include_once("functions.php");
 ?>
 <!DOCTYPE html>
@@ -18,14 +26,18 @@ if($db->connect_errno==0) {
     if($res){
             if($db->affected_rows > 0) {
                 ?>
-                Update sukses<br>
-                <a href="P06.php"><button class="btn06">View meja</button></a>
+                <script>
+                    alert("Status meja berhasil diupdate");
+                    window.location.href="P06.php";
+                </script>
                 <?php
             }
             else{
                 ?>
-                Update Gagal<br>
-                <a href="P06.php"><button class="btn06">Kembali</button></a>
+                <script>
+                    alert("Status meja gagal diupdate");
+                    window.location.href="P06.php";
+                </script>
                 <?php
             }
     }

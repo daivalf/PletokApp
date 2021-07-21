@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Kasir"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
 <!DOCTYPE html>
 <?php include_once("functions_pletok.php");?>
 <html lang="en">
@@ -21,7 +29,7 @@ if($db->connect_errno==0){
 		<div class="navbar">
 			<div class="judul">PLETOK APP</div>
 			<ul>
-				<li><a href="#">Back</a></li>	
+				<li><a href="P04.php">Back</a></li>	
 				<div class ="clear"></div>
 			</ul>
 		</div>
@@ -44,7 +52,7 @@ if($db->connect_errno==0){
 			<td><?php echo $barisdata["nama_pelanggan"];?></td>
 			<td><?php echo $barisdata["nomor_meja"];?></td>
 			<td><?php echo $barisdata["tgl_pemesanan"];?></td>
-			<td class="detail"><a href="P19.php?id_pesanan=<?php echo $barisdata["id_pesanan"]; ?>">Detail</a>
+			<td class="detail"><a href="P21.php?id_pesanan=<?php echo $barisdata["id_pesanan"]; ?>">Detail</a>
 			<td align="center"><a href="#" class="hapus">Hapus</a></td>
 			</tr>
 		

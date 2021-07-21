@@ -21,7 +21,7 @@ if ($datapembayaran = getDataBayar($idPembayaran)) {
 		<div class="navbar">
 			<div class="judul">PLETOK APP</div>
 			<ul>
-				<li><a href="#">Back</a></li>	
+				<li><a href="P04.php">Back</a></li>	
 				<div class ="clear"></div>
 			</ul>
 		</div>

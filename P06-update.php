@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
+<?php
 include_once("functions.php");
 ?>
 <!DOCTYPE html>

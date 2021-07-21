@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Bartender"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
 <?php 
 include_once("functions.php");
 ?>

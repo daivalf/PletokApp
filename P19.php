@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
 <?php 
 include_once("functions.php");
 $db = dbconnect();
@@ -37,10 +45,13 @@ $db = dbconnect();
     <h1>Rincian Pesanan</h1>
 
     <?php
+        $id_pesanan = $_GET["id_pesanan"];
         if($db -> connect_errno==0)
         {
-            $sql = "select tb_menu.nama_menu, tb_menu.harga, tb_menu.id_menu, tb_rincian_pesanan.jumlah_pesanan, tb_rincian_pesanan.id_menu
-                    from tb_menu join tb_rincian_pesanan using(id_menu)";
+            $sql = "SELECT tb_rincian_pesanan.id_pesanan, tb_menu.nama_menu, tb_menu.harga, tb_menu.id_menu, tb_rincian_pesanan.jumlah_pesanan, tb_rincian_pesanan.id_menu,
+                    (tb_menu.harga * tb_rincian_pesanan.jumlah_pesanan) as Subtotal, (SELECT SUM(tb_menu.harga * tb_rincian_pesanan.jumlah_pesanan) FROM tb_menu, tb_rincian_pesanan WHERE tb_menu.id_menu = tb_rincian_pesanan.id_menu AND tb_rincian_pesanan.id_pesanan = '$id_pesanan') as Total
+                    FROM tb_menu join tb_rincian_pesanan using(id_menu)
+                    WHERE tb_rincian_pesanan.id_pesanan='$id_pesanan'";
             $res = $db -> query($sql);
 
             if($res)
@@ -61,17 +72,17 @@ $db = dbconnect();
                      <td><?php echo $barisdata["nama_menu"];?></td>
                      <td><?php echo $barisdata["jumlah_pesanan"];?></td>
                      <td><?php echo $barisdata["harga"];?></td>
-                     <td>&nbsp;</td>
-                     
+                     <td><?php echo $barisdata["Subtotal"]; ?></td>
                  </tr>
                  <?php
              }
              ?>
             <tr>
-                <th colspan="3" class="th1">Total Bayar</th>
+                <td colspan="3" class="th1">Total Bayar</td>
+                <td><?php echo $barisdata["Total"]; ?></td>
             </tr>
             </table>
-            <input type="submit" name="tblsimpan" value="Tambah Rincian" class="btn191"> 
+            <a style="text-decoration: none; color: black;" name="tblsimpan" class="btn191" href="P24.php?id_pesanan=<?php echo $id_pesanan; ?>">Tambah Rincian</a>
              <?php
             } 
             else

@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
+<?php
 include_once("functions.php");
 $db=dbconnect();
 ?>
@@ -35,7 +43,6 @@ $db=dbconnect();
 ?>
         <tr>
             <td><?php echo $barisdata["nomor_meja"]?></td>
-            
             <td><?php echo $barisdata["status"]?></td>
             <td><a href="P06-update.php?nomor_meja=<?php echo $barisdata["nomor_meja"]?>"><button class="btn06">Update</button></a></td>
         </tr>

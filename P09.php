@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Bartender"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
+<?php
 include_once("functions.php");
 $db=dbconnect();
 ?>
@@ -6,7 +14,7 @@ $db=dbconnect();
 <html>
 <head>
 <?php
-    navigasi_P09();
+    $getdatap09 = navigasi_P09();
     ?>
 </head>
 <Link rel="stylesheet" href="style_fauzan.css">
@@ -17,13 +25,13 @@ $db=dbconnect();
     <h1></h1>
     <table border="1" class="table">
 <tr><td>Id Menu </td>
-    <td><input type="text" name="id_menu_sementara" size="20" maxlength="21"></td></tr>
+    <td><input type="text" name="id_menu" size="20" maxlength="21"></td></tr>
 <tr><td>Nama Menu </td>
-    <td><input type="text" name="nama_menu_sementara" size="20" maxlength="21"></td></tr>
+    <td><input type="text" name="nama_menu" size="20" maxlength="21"></td></tr>
 <tr><td>Harga</td>
-    <td><input type="text" name="harga_sementara" size="20" maxlength="21"></td></tr>
+    <td><input type="text" name="harga" size="20" maxlength="21"></td></tr>
 </table>
 <input type="submit" name="tblsimpan" value="simpan" class="btn09">
-        <input type="reset"class="btn09">
+<input type="reset"class="btn09">
     </form>
 </body>

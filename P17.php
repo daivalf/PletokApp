@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Owner"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
+<?php
 include_once("functions.php");
 $db=dbconnect();
 ?>
@@ -16,8 +24,9 @@ $db=dbconnect();
     <?php
     $db = dbConnect();
     if($db->connect_errno==0){
-        $sql = "SELECT id_menu_sementara,nama_menu_sementara,harga_sementara
-        FROM tb_menu_sementara
+        $sql = "SELECT id_menu, nama_menu, harga
+        FROM tb_menu
+        WHERE status_verifikasi = 'belum';
         ";
         $res= $db->query($sql);
         if($res) {
@@ -34,11 +43,11 @@ $db=dbconnect();
     foreach($data as $barisdata) {
 ?>
         <tr>
-            <td><?php echo $barisdata["id_menu_sementara"]?></td>
-            <td><?php echo $barisdata["nama_menu_sementara"]?></td>
-            <td><?php echo $barisdata["harga_sementara"]?></td>
-            <td><a href="P17-terima.php?id_menu_sementara=<?php echo $barisdata["id_menu_sementara"]?>"><button class="btn17">Terima</button></a>
-            <a href="P17-tolak.php?id_menu_sementara=<?php echo $barisdata["id_menu_sementara"]?>"><button class="btn17">Tolak</button></a></td>
+            <td><?php echo $barisdata["id_menu"]?></td>
+            <td><?php echo $barisdata["nama_menu"]?></td>
+            <td><?php echo $barisdata["harga"]?></td>
+            <td><a href="P17-terima.php?id_menu=<?php echo $barisdata["id_menu"]?>"><button class="btn17">Terima</button></a>
+            <a href="P17-tolak.php?id_menu=<?php echo $barisdata["id_menu"]?>"><button class="btn17">Tolak</button></a></td>
         </tr>
         
             <?php

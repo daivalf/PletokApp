@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
 <?php 
 include_once("functions.php");
 $db = dbconnect();
@@ -37,6 +45,7 @@ $db = dbconnect();
                     <th>Nomor Meja</th>
                     <th>Tanggal Pemesanan</th>
                     <th>Rincian Pesanan</th>
+                    <th>Hapus Pesanan</th>
                 </tr>    
     <?php
                 $data = $res->fetch_all(MYSQLI_ASSOC);
@@ -48,7 +57,15 @@ $db = dbconnect();
                         <td><?php echo $barisdata["nama_pelanggan"];?></td>
                         <td><?php echo $barisdata["nomor_meja"];?></td>
                         <td><?php echo $barisdata["tgl_pemesanan"];?></td>
-                        <td><a href = "P19.php">Detail</a></td>
+                        <td>
+                            <a style="text-decoration: none;" href="P19.php?id_pesanan=<?php echo $barisdata["id_pesanan"]; ?>">
+                            Detail
+                            </a>
+                        </td>
+                        <td>
+                            <a style="text-decoration: none;" href="P07-konfirmasihapus.php?id_pesanan=<?php echo $barisdata["id_pesanan"]; ?>">
+                            Hapus
+                            </a>
                         </td>
                     </tr>
                     <?php
@@ -60,5 +77,5 @@ $db = dbconnect();
         else
         echo "Gagal menampilkan data" . (DEVELOPMENT ? " : " . $db->connect_error : "") . "<br>";
     ?>
-            <button class="btn"><a href="P22.php">Tambah Pesanan</a></button>
+            <a style="text-decoration: none;" href="P22.php"><button class="btn">Tambah Pesanan</button></a>
 </body>

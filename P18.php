@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Owner"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
 <?php 
 include_once("functions.php");
 $db = dbconnect();
@@ -23,7 +31,7 @@ $db = dbconnect();
     <?php
         if($db -> connect_errno==0)
         {
-            $sql = "select * from tb_menu";
+            $sql = "select * from tb_menu where status_verifikasi = 'sudah'";
 
             $res = $db->query($sql);
             if($res)

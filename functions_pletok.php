@@ -49,7 +49,7 @@ function getDataRincian($id_pesanan){
 		return FALSE;
 }
 	
-function getListRincian(){
+function getListRincian($id_pesanan){
 	$db=dbConnect();
 	if($db->connect_errno==0){
 		$res=$db->query("SELECT menu.nama_menu, rincian.jumlah_pesanan, menu.harga, 

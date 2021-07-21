@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Bartender"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
 <?php 
 include_once("functions.php");
 $db = dbconnect();
@@ -49,7 +57,7 @@ $db = dbconnect();
                         <td><?php echo $barisdata["nama_menu"];?></td>
                         <td><?php echo $barisdata["harga"];?></td>
                         <td><?php echo $barisdata["stok"];?></td>
-                        <td><a href="P11-update.php?id_menu=<?php echo $barisdata["id_menu"]?>">Update Stok</a></td>
+                        <td><a style="text-decoration: none;" href="P11-update.php?id_menu=<?php echo $barisdata["id_menu"]?>">Update Stok</a></td>
 
                     </tr>    
                     

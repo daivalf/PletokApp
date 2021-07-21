@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
+<?php
     include_once("functions.php");
     $db=dbconnect();
 ?>
@@ -25,12 +33,14 @@
 
             $sql1 = "insert into tb_pelanggan values ('$nomorPelanggan','$nomorMeja', '$namaPelanggan', '$tglPesan')";            
             $sql2 = "insert into tb_pesanan values ('$idPesanan', '$nomorPelanggan', '$tglPesan')";
-
+            $sql3 = "UPDATE tb_meja SET tb_meja.status='tidak tersedia'
+                    WHERE tb_meja.nomor_meja='$nomorMeja'";
             //echo $sql1;
             //echo $sql2;
 
             $res=$db->query($sql1);
             $res=$db->query($sql2);
+            $res=$db->query($sql3);
 
             if($res)
             {

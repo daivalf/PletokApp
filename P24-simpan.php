@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Bartender"))
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
     {
         header("Location: index.php?error=4");
     }
@@ -17,12 +17,13 @@ $db=dbconnect();
     <?php
 $db = dbConnect();
 if($db->connect_errno==0) {
+    getListMenu();
+    $id_pesanan = $db->escape_string($_GET["id_pesanan"]);
     $id_menu   =$db->escape_string($_POST["id_menu"]);
-    $nama_menu      =$db->escape_string($_POST["nama_menu"]);
-    $harga     =$db->escape_string($_POST["harga"]);
-    if ($id_menu== ''||
-       $nama_menu== ''||
-       $harga== '')
+    $jumlah = $db->escape_string($_POST["jumlah"]);
+    if ($id_pesanan== ''||
+       $id_menu== ''||
+       $jumlah== '')
        {
         echo "Semua data harus diisi" . "<br>";
                     ?>
@@ -32,24 +33,28 @@ if($db->connect_errno==0) {
        else
        {
     
-    $id_menu   =$db->escape_string($_POST["id_menu"]);
-    $nama_menu =$db->escape_string($_POST["nama_menu"]);
-    $harga =$db->escape_string($_POST["harga"]);
+        $id_pesanan = $db->escape_string($_GET["id_pesanan"]);
+        $id_menu   =$db->escape_string($_POST["id_menu"]);
+        $jumlah = $db->escape_string($_POST["jumlah"]);
 
-    $sql="INSERT INTO tb_menu VALUES('$id_menu','$nama_menu','$harga', 'tidak tersedia', 'belum')";
+    $sql="INSERT INTO tb_rincian_pesanan VALUES('$id_pesanan','$id_menu','$jumlah')";
     //echo $sql;
     $res = $db->query($sql);
     if($res){
             if($db->affected_rows>0) {
                 ?>
-                <h1 class="h1">Data Berhasil Diajukan</h1><br>
-                <a href="P09.php"><button class="btn09">View penambahan menu baru</button></a>
+                <script>
+                    alert("Rincian menu telah ditambahkan");
+                    window.location.href="P19.php?id_pesanan=<?php echo $id_pesanan; ?>";
+                </script>
                 <?php
             }
             else{
                 ?>
-                pemyimpanan Gagal<br>
-                <a href="javascript.history.back();"><button class="btn09">Kembali</button></a>
+                <script>
+                    alert("Rincian menu telah ditambahkan");
+                    window.location.href="P19.php?id_pesanan=<?php echo $id_pesanan; ?>";
+                </script>
                 <?php
             }
     }

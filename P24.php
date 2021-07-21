@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
+<?php
 include_once("functions.php");
 $db=dbconnect();
 ?>
@@ -26,8 +34,9 @@ tr {
     </style>
 <body>
         <div class="background"></div>
-        <form method="post" name="F" action="">
-    <h1>Pengajuan Penambahan Menu Baru </h1>
+        <?php $id_pesanan = $_GET["id_pesanan"]; ?>
+        <form method="post" name="F" action="P24-simpan.php?id_pesanan=<?php echo $id_pesanan; ?>">
+    <h1>Tambah Rincian Pesanan</h1>
     <table border="1" class="table">
 <tr><td>Nama Menu</td>
     <td><select name="id_menu">
@@ -40,7 +49,7 @@ tr {
 		?>
 		</select></td>
 <tr><td>Jumlah</td>
-    <td><input type="text" name="Jumlah" size="12" maxlength="2"></td></tr>
+    <td><input type="text" name="jumlah" size="12" maxlength="2"></td></tr>
 </table>
         <input type="submit" name="tblsimpan" value="Tambah" class="btn231">
         <input type="reset" class="btn23">

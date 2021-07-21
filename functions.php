@@ -8,12 +8,30 @@ function dbconnect(){
     return $db;
 }
 
-function getListMeja()
+function getListPesanan()
 {
     $db=dbconnect();
     if($db->errno==0)
     {
-        $res=$db->query("select * from tb_meja order by nomor_meja");
+        $res=$db->query("select * from tb_pesanan");
+            if($res)
+            {
+                $data=$res->fetch_all(MYSQLI_ASSOC);
+                return $data;
+            }
+            else 
+                return false;
+    }
+    else
+        return false;
+}
+
+function getListPelanggan()
+{
+    $db=dbconnect();
+    if($db->errno==0)
+    {
+        $res=$db->query("select * from tb_pelanggan order by id_pelanggan");
             if($res)
             {
                 $data=$res->fetch_all(MYSQLI_ASSOC);
@@ -31,7 +49,7 @@ function getListMenu()
     $db=dbconnect();
     if($db->errno==0)
     {
-        $res=$db->query("select * from tb_menu order by id_menu");
+        $res=$db->query("select * from tb_menu where stok='tersedia' order by id_menu");
             if($res)
             {
                 $data=$res->fetch_all(MYSQLI_ASSOC);
@@ -42,6 +60,42 @@ function getListMenu()
     }
     else
         return false;
+}
+
+function getListMeja()
+{
+    $db=dbconnect();
+    if($db->errno==0)
+    {
+        $res=$db->query("select * from tb_meja where tb_meja.status='tersedia' order by nomor_meja");
+            if($res)
+            {
+                $data=$res->fetch_all(MYSQLI_ASSOC);
+                return $data;
+            }
+            else 
+                return false;
+    }
+    else
+        return false;
+}
+
+function getDataMenuSementara($id_menu_sementara) {
+    $db = dbConnect();
+    if($db->errno==0) {
+        $res=$db->query(("SELECT id_menu_sementara,nama_menu_sementara,harga_sementara
+        FROM tb_menu_sementara
+        WHERE id_menu_sementara='$id_menu_sementara'"));
+        if($res) {
+            $data=$res->fetch_assoc();
+            
+            return $data;
+        }
+        else
+        return false;
+    }
+    else
+    return false;
 }
 
 function getDataMenu($idMenu)
@@ -99,10 +153,10 @@ function navigasi_pelayan()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a href="">Daftar Meja</a></li>
+                    <li><a href="P06.php">Daftar Meja</a></li>
                     <li><a href="P07.php">List Pesanan</a></li>
                     <li><a href="P08.php">Daftar Menu</a></li>
-                    <li><a style="color: red;" href="">Logout</a></li>
+                    <li><a style="color: red;" href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </head>
@@ -124,10 +178,10 @@ function navigasi_bartender()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a href="">Buat Menu Baru</a></li>
-                    <li><a href="">Konfirmasi Stok</a></li>
+                    <li><a href="P09.php">Buat Menu Baru</a></li>
+                    <li><a href="P11.php">Konfirmasi Stok</a></li>
                     <li><a href="P10.php">List pesanan</a></li>
-                    <li><a style="color: red;" href="">Logout</a></li>
+                    <li><a style="color: red;" href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </head>
@@ -149,11 +203,10 @@ function navigasi_kasir()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a href="">Konfirmasi Pembayaran</a></li>
-                    <li><a href="">Laporan Pendapatan</a></li>
-                    <li><a href="">Pengecekan Stok</a></li>
-                    <li><a href="">List Pesanan</a></li>
-                    <li><a style="color: red;" href="">Logout</a></li>
+                    <li><a href="P12.php">Konfirmasi Pembayaran</a></li>
+                    <li><a href="P14.php">Pengecekan Stok</a></li>
+                    <li><a href="P15.php">List Pesanan</a></li>
+                    <li><a style="color: red;" href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </head>
@@ -175,10 +228,10 @@ function navigasi_owner()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a href="">Laporan Pendapatan</a></li>
-                    <li><a href="">Konfirmasi Tambah Menu</a></li>
-                    <li><a href="">Daftar Menu</a></li>
-                    <li><a style="color: red;" href="">Logout</a></li>
+                    <li><a href="P16.php">Laporan Pendapatan</a></li>
+                    <li><a href="P17.php">Konfirmasi Menu</a></li>
+                    <li><a href="P18.php">Daftar Menu</a></li>
+                    <li><a style="color: red;" href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </head>
@@ -247,6 +300,27 @@ function getDataMeja($nomor_meja) {
     return false;
 }
 
+function getDataPesanan($id_pesanan)
+{
+    $db = dbconnect();
+    if ($db->errno==0) 
+    {
+        $res = $db->query("select tb_pesanan.id_pesanan, tb_pelanggan.nama_pelanggan, tb_pelanggan.nomor_pelanggan, tb_meja.nomor_meja, tb_pesanan.tgl_pemesanan
+        from tb_pelanggan join tb_pesanan on tb_pelanggan.nomor_pelanggan = tb_pesanan.nomor_pelanggan
+                          join tb_meja on tb_meja.nomor_meja = tb_pelanggan.nomor_meja ");
+        if ($res) 
+        {
+            $data = $res->fetch_assoc();
+
+            return $data;
+        }
+        else
+        return false;
+    }
+    else
+    return false;
+}
+
 function navigasi_P07()
 {
     ?>
@@ -260,6 +334,28 @@ function navigasi_P07()
                 </div>
                 <ul>
                     <li><a style="color: red;" class="thick" href="P02.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+
+function navigasi_P071()
+{
+    ?>
+    <html>
+        <head>
+            <title>Hapus Data Pesanan</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" class="thick" href="P07.php">Back</a></li>
                 </ul>
             </nav>
         </head>
@@ -311,6 +407,48 @@ function navigasi_P09()
     </html>
     <?php
 }
+function navigasi_P17()
+{
+?>
+    <html>
+        <head>
+            <title>List Meja</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P05.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
+function navigasi_P171()
+{
+?>
+    <html>
+        <head>
+            <title>List Meja</title>
+            <link rel="stylesheet" type="text/css" href="navbar.css">
+            <nav>
+                <div class="logo">
+                    <p>Pletok App</p>
+                </div>
+                <ul>
+                    <li><a style="color: red;" href="P17.php">Back</a></li>
+                </ul>
+            </nav>
+        </head>
+        <body>
+        </body>
+    </html>
+    <?php
+}
 
 function navigasi_P19()
 {
@@ -324,7 +462,7 @@ function navigasi_P19()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a style="color: red;" href="P07.php" class="thick">Back</a></li>
+                    <li><a style="color: red;" href="javascript:history.back();" class="thick">Back</a></li>
                 </ul>
             </nav>
         </head>
@@ -391,7 +529,7 @@ function navigasi_P11()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a style="color: red;" href="P03.php">Back</a></li>
+                    <li><a style="color: red;" href="P11.php">Back</a></li>
                 </ul>
             </nav>
         </head>
@@ -414,7 +552,7 @@ function navigasi_P23()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a style="color: red;" href="P03.php" class="thick">Back</a></li>
+                    <li><a style="color: red;" href="P12.php" class="thick">Back</a></li>
                 </ul>
             </nav>
         </head>
@@ -445,7 +583,6 @@ function navigasi_P18()
     </html>
     <?php
 }
-
 
 function navigasi_P20()
 {
@@ -481,7 +618,7 @@ function navigasi_P24()
                     <p>Pletok App</p>
                 </div>
                 <ul>
-                    <li><a style="color: red;" href="P19.php" class="thick">Back</a></li>
+                    <li><a style="color: red;" href="javascript:history.back()" class="thick">Back</a></li>
                 </ul>
             </nav>
         </head>
@@ -492,4 +629,3 @@ function navigasi_P24()
 }
 
 ?>
-

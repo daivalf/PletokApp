@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["id_pegawai"]) || ($_SESSION["jabatan"] != "Pelayan"))
+    {
+        header("Location: index.php?error=4");
+    }
+?>
+
 <?php 
 include_once("functions.php");
 $db = dbconnect();
@@ -24,7 +32,7 @@ $db = dbconnect();
         
         <table border="2">
             <tr><td >Id Pesanan</td>
-                <td align="left"><input type="text" name="idPesanan" size="30" maxlength="30"></td></tr>
+                <td align="left"><input type="text" placeholder="ddmmyy-urutanpelanggan-nomormeja" name="idPesanan" size="30" maxlength="30"></td></tr>
             <tr><td>Tanggal Pemesanan</td>
                 <td align="left"><input type="date" name="tglPesan" size="30" maxlength="30"></td></tr>    
             <tr><td>Nomor Meja</td>

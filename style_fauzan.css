@@ -37,12 +37,13 @@
     line-height: 1;
     padding : 5px 7px;
     background : #FE9696;
+    cursor: pointer;
 }
 
-.btn:hover,.btn:focus{
+.btn06:hover,.btn06:focus{
     background: #FF5B5B ;
 }
-.btn:active{
+.btn06:active{
     background: #FF5B5B;
 }
 .btn09 {
@@ -55,12 +56,13 @@
     line-height: 1;
     padding : 16px 30px;
     background : #FE9696;
+    cursor: pointer;
 }
 
-.btn:hover,.btn:focus{
+.btn09:hover,.btn09:focus{
     background: #FF5B5B ;
 }
-.btn:active{
+.btn09:active{
     background: #FF5B5B;
 }
 .btn17 {
@@ -69,11 +71,51 @@
     line-height: 1;
     padding : 5px 7px;
     background : #FE9696;
+    cursor: pointer;
 }
 
-.btn:hover,.btn:focus{
+.btn17:hover,.btn17:focus{
     background: #FF5B5B ;
 }
-.btn:active{
+.btn17:active{
+    background: #FF5B5B;
+}
+
+.btn07 {
+    border : 0;
+    border-radius: 100px;
+    line-height: 1;
+    padding : 5px 7px;
+    background : #FE9696;
+    position: absolute;
+    top: 350px;
+    left: 100px;
+    cursor: pointer;
+}
+
+.btn07:hover,.btn07:focus{
+    background: #FF5B5B ;
+}
+.btn107:active{
+    background: #FF5B5B;
+}
+
+.btn17-2 {
+    border : 0;
+    border-radius: 100px;
+    line-height: 1;
+    padding : 5px 7px;
+    background : #FE9696;
+    position: absolute;
+    top: 315px;
+    left: 100px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn17-2:hover,.btn17-2:focus{
+    background: #FF5B5B ;
+}
+.btn17-2:active{
     background: #FF5B5B;
 }
