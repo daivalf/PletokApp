@@ -21,7 +21,9 @@
 <?php
 $db=dbConnect();
 if($db->connect_errno==0){
-	$sql="SELECT * FROM tb_pembayaran WHERE status_bayar='belum' ORDER BY id_pesanan";
+	$sql="SELECT * FROM tb_pembayaran
+		  WHERE status_bayar='belum'
+		  ORDER BY id_pesanan";
 	$res=$db->query($sql);
 	if($res){
 		?>
@@ -37,7 +39,7 @@ if($db->connect_errno==0){
 	<div class="konfirmasi">Konfirmasi Pembayaran </div>
 		<div class="tabel">
 			<table border="1">
-				<tr><th>ID Pesanan</th><th>Metode Bayar</th><th>Total</th><th>Konfirmasi</th></tr>
+				<tr><th>ID Pesanan</th><th>Metode Bayar</th><th>Total</th><th>Detail Pesanan</th><th>Konfirmasi</th></tr>
 		<?php
 		$data=$res->fetch_all(MYSQLI_ASSOC); 
 		foreach($data as $barisdata){ 
@@ -46,6 +48,7 @@ if($db->connect_errno==0){
 			<td><?php echo $barisdata["id_pesanan"];?></td>
 			<td><?php echo $barisdata["metode_bayar"];?></td>
 			<td><?php echo $barisdata["total_bayar"];?></td>
+			<td class="detail"><a href="P21.php?id_pesanan=<?php echo $barisdata["id_pesanan"]; ?>">Detail</a>
 			<td class="bayar">
 				<a href="P12-update.php?id_pesanan=<?php echo $barisdata["id_pesanan"]; ?>">Bayar</a>
 			</td>
@@ -63,7 +66,8 @@ if($db->connect_errno==0){
 	else
 		echo "Gagal koneksi".(DEVELOPMENT?" : ".$db->connect_error:"")."<br>";
 ?>
-		<div class="tambah" align=><a href ="P23.php">Tambah Pembayaran</a></div>			
+		<div class="tambah">
+			<a href ="P23.php">Tambah Pembayaran</a></div>			
 		</div>
 
 	</div>

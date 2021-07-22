@@ -21,9 +21,10 @@
 <?php
 $db=dbConnect();
 if($db->connect_errno==0){
-	$sql="SELECT pes.id_pesanan,  pel.nama_pelanggan, pel.nomor_meja, pel.tgl_pemesanan
+	$sql="SELECT pes.id_pesanan,  pel.nama_pelanggan, pel.nomor_meja, pel.tgl_pemesanan, pem.status_bayar
 		  FROM tb_pesanan pes
-		  JOIN tb_pelanggan pel ON pes.nomor_pelanggan = pel.nomor_pelanggan";
+		  JOIN tb_pelanggan pel ON pes.nomor_pelanggan = pel.nomor_pelanggan
+		  JOIN tb_pembayaran pem ON pem.id_pesanan = pes.id_pesanan";
 	$res=$db->query($sql);
 	if($res){
 		?>
@@ -44,6 +45,7 @@ if($db->connect_errno==0){
 					<th>Nomor Meja</th>
 					<th>Tanggal Pemesanan</th>
 					<th>Rincian Pesanan</th>
+					<th>Status Bayar</th>
 			<?php
 		$data=$res->fetch_all(MYSQLI_ASSOC); 
 		foreach($data as $barisdata){ 
@@ -54,6 +56,7 @@ if($db->connect_errno==0){
 			<td><?php echo $barisdata["nomor_meja"];?></td>
 			<td><?php echo $barisdata["tgl_pemesanan"];?></td>
 			<td class="detail"><a href="P21.php?id_pesanan=<?php echo $barisdata["id_pesanan"]; ?>">Detail</a>
+			<td><?php  echo $barisdata["status_bayar"];?></td>
 			</tr>
 		
 		<?php

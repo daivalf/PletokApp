@@ -31,9 +31,12 @@ $db = dbconnect();
     <?php
         if($db -> connect_errno==0)
         {
-            $sql = "select tb_pesanan.id_pesanan, tb_pelanggan.nama_pelanggan, tb_pelanggan.nomor_pelanggan, tb_meja.nomor_meja, tb_pesanan.tgl_pemesanan
-                    from tb_pelanggan join tb_pesanan on tb_pelanggan.nomor_pelanggan = tb_pesanan.nomor_pelanggan
-                                      join tb_meja on tb_meja.nomor_meja = tb_pelanggan.nomor_meja ";
+            $sql = "SELECT tb_pesanan.id_pesanan, tb_pelanggan.nama_pelanggan, tb_pelanggan.nomor_pelanggan, tb_meja.nomor_meja, tb_pesanan.tgl_pemesanan
+                    FROM tb_pelanggan
+                    JOIN tb_pesanan ON tb_pelanggan.nomor_pelanggan = tb_pesanan.nomor_pelanggan
+                    JOIN tb_meja ON tb_meja.nomor_meja = tb_pelanggan.nomor_meja
+                    JOIN tb_pembayaran ON tb_pembayaran.id_pesanan = tb_pesanan.id_pesanan
+                    WHERE tb_pembayaran.status_bayar='sudah'";
             $res = $db->query($sql);
             
             if($res)
